@@ -24,6 +24,24 @@ namespace Hommy_v2.ViewModels
             }
         }
 
+        public static byte[] ImageToBytes(Stream stream)
+        {
+            using(MemoryStream memoryStream = new MemoryStream())
+            {
+                stream.CopyTo(memoryStream);
+                return memoryStream.ToArray();
+            }
+        }
+
+        public static ImageSource BytesToImage(byte[] bytes)
+        {
+            if(bytes != null)
+            {
+                return ImageSource.FromStream(() => new MemoryStream(bytes));
+            }
+            return null;
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged(string propertyName)
@@ -31,26 +49,6 @@ namespace Hommy_v2.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public byte[] ConvertirImagenABytes(ImageSource imageSource)
-        {
-            if (imageSource is StreamImageSource streamImageSource)
-            {
-                System.Threading.CancellationToken cancellationToken = System.Threading.CancellationToken.None;
-                Task<Stream> task = streamImageSource.Stream(cancellationToken);
-                Stream stream = task.Result;
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    stream.CopyTo(ms);
-                    return ms.ToArray();
-                }
-            }
-            return null;
-        }
-
-        public void ConvertirBytesAImage(byte[] bytes)
-        {
-            MascotaImageSource = ImageSource.FromStream(() => new MemoryStream(bytes));
-        }
 
     }
 }

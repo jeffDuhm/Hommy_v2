@@ -47,22 +47,8 @@
     <StackLayout Margin="20">
         
         <Label Text="Sube una foto" Style="{StaticResource LabelEstilo}" FontAttributes="Bold" />
-      
 
-        <!--<StackLayout HorizontalOptions="Start">
-            <Frame Padding="10" CornerRadius="10" BorderColor="LightGray" HasShadow="False">
-                <Grid HorizontalOptions="Start">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="50" />
-                    </Grid.ColumnDefinitions>
-                    <Frame WidthRequest="40" HeightRequest="40" CornerRadius="80" BackgroundColor="#FFB256" VerticalOptions="Center" Padding="0">
-                        <Button Text="+" TextColor="Black" Clicked="SubirImagenClicked" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
-                    </Frame>
-                    <Image x:Name="ImagenMascota" Aspect="AspectFill" WidthRequest="80" HeightRequest="80" Grid.Column="1" Source="{Binding MascotaImageSource}" />
-                </Grid>
-            </Frame>
-        </StackLayout>-->
+
 
         <StackLayout HorizontalOptions="Start">
             <Frame Padding="10"  HasShadow="False">
@@ -75,17 +61,16 @@
                         <Image x:Name="ImagenMascota" Aspect="AspectFill" Source="{Binding MascotaImageSource}" />
                     </Frame>
                     <Button Grid.Column="1" 
-                            Background="#FFB256" 
-                            CornerRadius="80" 
-                            TextColor="Black" 
-                            Text="+" 
-                            Clicked="SubirImagenClicked" 
-                            HorizontalOptions="CenterAndExpand" 
-                            VerticalOptions="CenterAndExpand" />
+                        Background="#FFB256" 
+                        CornerRadius="80" 
+                        TextColor="Black" 
+                        Text="+" 
+                        Clicked="SubirImagenClicked" 
+                        HorizontalOptions="CenterAndExpand" 
+                        VerticalOptions="CenterAndExpand" />
                 </Grid>
             </Frame>
         </StackLayout>
-
 
 
         <Label Text="Datos de tu mascota" Style="{StaticResource LabelEstilo}" FontAttributes="Bold" />
@@ -93,17 +78,17 @@
 
 
             <StackLayout Orientation="Horizontal">
-                
+
                 <Label Text="Nombre:" Style="{StaticResource LabelEntryEstilo}" />
                 <Entry x:Name="nombre" Placeholder="Nombre" Style="{StaticResource EntryEstilo}"  />
 
             </StackLayout>
-            
+
             <StackLayout Orientation="Horizontal">
                 <Label Text="Raza:" Style="{StaticResource LabelEntryEstilo}"/>
                 <Entry x:Name="raza" Placeholder="Raza" Style="{StaticResource EntryEstilo}" />
             </StackLayout>
-            
+
             <StackLayout Orientation="Horizontal">
                 <Label Text="Edad:" Style="{StaticResource LabelEntryEstilo}" />
                 <Entry x:Name="edad" Placeholder="Edad" Style="{StaticResource EntryEstilo}" />
@@ -129,12 +114,12 @@
 
 
         <Button x:Name="BtnGuardar" Text="Agregar"  Style="{StaticResource BotonEstilo}" 
-                Margin="0,20,0,0" 
-                CornerRadius="20"
-                Padding="10"
-                WidthRequest="250"
-                HeightRequest="40"
-                Clicked="BtnGuardarMascotaClicked"/>
+            Margin="0,20,0,0" 
+            CornerRadius="20"
+            Padding="10"
+            WidthRequest="250"
+            HeightRequest="40"
+            Clicked="BtnGuardarMascotaClicked"/>
     </StackLayout>
 
 </ContentPage>

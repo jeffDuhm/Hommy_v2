@@ -15,13 +15,21 @@ using Xamarin.Forms.Xaml;
 
 namespace Hommy_v2.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RegistroMascotaPage : ContentPage
     {
-        public RegistroMascotaPage()
+        private int mascotaID;
+        private byte[] fotoBytes;
+        private Mascota _mascota; // Variable para mantener la mascota actual
+        public RegistroMascotaPage(Mascota mascota= null)
         {
             InitializeComponent();
+            _mascota = mascota; // Asigna la mascota proporcionada
+            
+
         }
+        
+
+        //-------------------------
 
 
         private async void SubirImagenClicked(object sender, EventArgs e)
@@ -32,60 +40,69 @@ namespace Hommy_v2.Views
                 return;
             }
 
-            var mediaOptions = new PickMediaOptions()
+            var opciones = new PickMediaOptions()
             {
                 PhotoSize = PhotoSize.Medium
             };
 
-            var selectedImageFile = await CrossMedia.Current.PickPhotoAsync(mediaOptions);
+            var imagenSeleccionada = await CrossMedia.Current.PickPhotoAsync(opciones);
 
-            if (selectedImageFile == null)
+            if (imagenSeleccionada == null)
                 return;
 
-            ImagenMascota.Source = ImageSource.FromStream(() => selectedImageFile.GetStream());
+            ImagenMascota.Source = ImageSource.FromStream(() => imagenSeleccionada.GetStream());
 
-            if (BindingContext is RegistroMascotasViewModel viewModel)
-            {
-                byte[] fotoBytes = viewModel.ConvertirImagenABytes(ImagenMascota.Source);
-                viewModel.ConvertirBytesAImage(fotoBytes);
-            }
-
+            fotoBytes = RegistroMascotasViewModel.ImageToBytes(imagenSeleccionada.GetStream());
         }
 
         private async void BtnGuardarMascotaClicked(object sender, EventArgs e)
         {
+
             try
             {
-                
-                var mascota = new Mascota
+                if (_mascota == null)
                 {
-                   
-                    Nombre = nombre.Text,
-                    Raza = raza.Text,
-                    Edad = edad.Text,
-                    Sexo = sexo.Text,
-                    Especie = especie.Text,
-                    Tamannio = tamannio.Text,
-                    Descripcion = descripcion.Text
-                };
-
-                //mascota.SetImageSource(ImagenMascota.Source);
-                if (ImagenMascota.Source is StreamImageSource streamImageSource)
-                {
-                    System.Threading.CancellationToken cancellationToken = System.Threading.CancellationToken.None;
-                    Task<Stream> task = streamImageSource.Stream(cancellationToken);
-                    Stream stream = task.Result;
-                    using (MemoryStream ms = new MemoryStream())
+                    // Crear una nueva mascota
+                    _mascota = new Mascota
                     {
-                        stream.CopyTo(ms);
-                        mascota.Foto = ms.ToArray();
-                    }
+                        Foto = fotoBytes,
+                        Nombre = nombre.Text,
+                        Raza = raza.Text,
+                        Edad = edad.Text,
+                        Sexo = sexo.Text,
+                        Especie = especie.Text,
+                        Tamannio = tamannio.Text,
+                        Descripcion = descripcion.Text
+                    };
+                }
+                else
+                {
+                    // Actualizar una mascota existente
+                    _mascota.Foto = fotoBytes;
+                    _mascota.Nombre = nombre.Text;
+                    _mascota.Raza = raza.Text;
+                    _mascota.Edad = edad.Text;
+                    _mascota.Sexo = sexo.Text;
+                    _mascota.Especie = especie.Text;
+                    _mascota.Tamannio = tamannio.Text;
+                    _mascota.Descripcion = descripcion.Text;
                 }
 
-                var result = await App.Context.InsertarMascotaAsync(mascota);
+                var result = await App.Context.InsertarMascotaAsync(_mascota);
+
                 if (result == 1)
-                { 
+                {
+                    Mascota mascotaRecuperada = await App.Context.ObtenerMascotaPorId(_mascota.ID);
+                    if (mascotaRecuperada.Foto != null && mascotaRecuperada.Foto.Length > 0)
+                    {
+                        await DisplayAlert("Éxito", "Se ha guardado la foto", "Aceptar");
+                    }
+                    else
+                    {
+                        await DisplayAlert("Error", "No se pudo registrar", "Aceptar");
+                    }
                     await Navigation.PopAsync();
+
                 }
                 else
                 {
@@ -96,6 +113,48 @@ namespace Hommy_v2.Views
             {
                 await DisplayAlert("Error", ex.Message, "Aceptar");
             }
+
+            //try
+            //{
+
+            //    var mascota = new Mascota
+            //    {
+
+            //        Foto = fotoBytes,
+            //        Nombre = nombre.Text,
+            //        Raza = raza.Text,
+            //        Edad = edad.Text,
+            //        Sexo = sexo.Text,
+            //        Especie = especie.Text,
+            //        Tamannio = tamannio.Text,
+            //        Descripcion = descripcion.Text
+            //    };
+
+            //    var result = await App.Context.InsertarMascotaAsync(mascota);
+
+            //    if (result == 1)
+            //    {
+            //        Mascota mascotaRecuperada = await App.Context.ObtenerMascotaPorId(mascota.ID);
+            //        if (mascotaRecuperada.Foto != null && mascotaRecuperada.Foto.Length > 0)
+            //        {
+            //            await DisplayAlert("Éxito", "Se ha guardado la foto", "Aceptar");
+            //        }
+            //        else
+            //        {
+            //            await DisplayAlert("Error", "No se pudo registrar", "Aceptar");
+            //        }
+            //        await Navigation.PopAsync();
+
+            //    }
+            //    else
+            //    {
+            //        await DisplayAlert("Error", "No se pudo registrar", "Aceptar");
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    await DisplayAlert("Error", ex.Message, "Aceptar");
+            //}
         }
     }
 }
