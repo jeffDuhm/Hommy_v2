@@ -20,6 +20,10 @@ namespace Hommy_v2.Data
             Connection.CreateTableAsync<Mascota>().Wait();
         }
 
+        public async Task<Mascota> ObtenerMascotaPorId(int id)
+        {
+            return await Connection.Table<Mascota>().Where(m => m.ID == id).FirstOrDefaultAsync();
+        }
         
         public async Task<List<Mascota>> ObtenerTodasLasMascotasAsync()
         {
@@ -30,10 +34,14 @@ namespace Hommy_v2.Data
             return await Connection.InsertAsync(mascota);
         }
 
-
         public async Task ActualizarMascotaAsync(Mascota mascota)
         {
             await Connection.UpdateAsync(mascota);
+        }
+        public async Task ActualizarListaMascotas()
+        {
+            // Lógica para actualizar la lista de mascotas desde la base de datos
+            await App.Context.ObtenerTodasLasMascotasAsync();
         }
 
         public async Task EliminarMascotaAsync(Mascota mascota)
@@ -41,23 +49,6 @@ namespace Hommy_v2.Data
             await Connection.DeleteAsync(mascota);
         }
 
-        //// Convierte una imagen a bytes para su almacenamiento
-        //public static byte[] ImageToBytes(ImageSource imageSource)
-        //{
-        //    StreamImageSource streamImageSource = (StreamImageSource)imageSource;
-        //    System.Threading.CancellationToken cancellationToken = System.Threading.CancellationToken.None;
-        //    Task<Stream> task = streamImageSource.Stream(cancellationToken);
-        //    Stream stream = task.Result;
-        //    MemoryStream ms = new MemoryStream();
-        //    stream.CopyTo(ms);
-        //    return ms.ToArray();
-        //}
-
-        //// Convierte bytes a una imagen para su visualización
-        //public static ImageSource BytesToImage(byte[] bytes)
-        //{
-        //    return ImageSource.FromStream(() => new MemoryStream(bytes));
-        //}
 
     }
 }
