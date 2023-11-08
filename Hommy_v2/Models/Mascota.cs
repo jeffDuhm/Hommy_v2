@@ -22,36 +22,7 @@ namespace Hommy_v2.Models
         public string Especie { get; set; }
         public string Tamannio { get; set; }
         public string Descripcion { get; set; }
-        // Agrega otras propiedades según sea necesario
 
-
-        //public void SetImageSource(ImageSource imageSource)
-        //{
-        //    Foto = DataBaseContext.ImageToBytes(imageSource);
-        //}
-        public void SetImageSource(ImageSource imageSource)
-        {
-            if (imageSource is StreamImageSource streamImageSource)
-            {
-                System.Threading.CancellationToken cancellationToken = System.Threading.CancellationToken.None;
-                Task<Stream> task = streamImageSource.Stream(cancellationToken);
-                Stream stream = task.Result;
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    stream.CopyTo(ms);
-                    Foto = ms.ToArray();
-                }
-            }
-        }
-
-        public ImageSource GetImageSource()
-        {
-            if (Foto != null)
-            {
-                return ImageSource.FromStream(() => new MemoryStream(Foto));
-            }
-            return null;
-        }
 
     }
 
