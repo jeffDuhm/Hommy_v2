@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Hommy_v2.Views.MascotasPage"
+             xmlns:vm="clr-namespace:Hommy_v2.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:MascotasViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+           
+        </Grid.RowDefinitions>
+        
+        <StackLayout>
+            <!-- Agrega otros elementos de la página aquí -->
+
+            <SearchBar x:Name="searchBar"
+                       Placeholder="Buscar mascotas..."
+                       SearchButtonPressed="OnSearchButtonPressed" />
+        </StackLayout>
+      
+        <ScrollView Grid.Row="1">
+            <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
+              
+                <Button Margin="0,10,0,0" Text="Agregar nueva mascota"
+                    Clicked="RegistrarMascotaClicked"
+                    BackgroundColor="{StaticResource colorAccent}"
+                    TextColor="Black" />
+            </StackLayout>
+        </ScrollView>
+        <ScrollView Grid.Row="2">
+            <ListView x:Name="listaMascotas" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame Padding="10" Margin="5" CornerRadius="10" BorderColor="LightGray" HasShadow="True">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Frame WidthRequest="60" HeightRequest="60" CornerRadius="30" BackgroundColor="#FFB256" VerticalOptions="Center" Padding="0">
+                                        <Image Source="{Binding Foto}" Aspect="AspectFill" />
+                                    </Frame>
+                                    <Label Text="{Binding Nombre}" TextColor="Black" Grid.Column="1" VerticalOptions="Center" />
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                
+            </ListView>
+        </ScrollView>
+
+    </Grid>
+</ContentPage>

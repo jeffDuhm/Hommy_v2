@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Hommy_v2.Views.RegistroMascotaPage"
+             xmlns:vm="clr-namespace:Hommy_v2.ViewModels"
+             Title="Registro">
+    
+    
+    <ContentPage.BindingContext>
+        <vm:RegistroMascotasViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+           
+            <Style TargetType="Label" x:Key="LabelEstilo">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="18" />
+            </Style>
+
+            <Style TargetType="Label" x:Key="LabelEntryEstilo">
+                <Setter Property="TextColor" Value="#FECF50"/>
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+            
+            
+            <Style TargetType="Entry" x:Key="EntryEstilo">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="Center" />
+
+            </Style>
+            
+            <Style TargetType="Button" x:Key="BotonEstilo">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="Background" Value="#FFB256" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    
+    <StackLayout Margin="20">
+        
+        <Label Text="Sube una foto" Style="{StaticResource LabelEstilo}" FontAttributes="Bold" />
+      
+
+        <!--<StackLayout HorizontalOptions="Start">
+            <Frame Padding="10" CornerRadius="10" BorderColor="LightGray" HasShadow="False">
+                <Grid HorizontalOptions="Start">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="50" />
+                    </Grid.ColumnDefinitions>
+                    <Frame WidthRequest="40" HeightRequest="40" CornerRadius="80" BackgroundColor="#FFB256" VerticalOptions="Center" Padding="0">
+                        <Button Text="+" TextColor="Black" Clicked="SubirImagenClicked" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                    </Frame>
+                    <Image x:Name="ImagenMascota" Aspect="AspectFill" WidthRequest="80" HeightRequest="80" Grid.Column="1" Source="{Binding MascotaImageSource}" />
+                </Grid>
+            </Frame>
+        </StackLayout>-->
+
+        <StackLayout HorizontalOptions="Start">
+            <Frame Padding="10"  HasShadow="False">
+                <Grid HorizontalOptions="Start">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="100" />
+                    </Grid.ColumnDefinitions>
+                    <Frame WidthRequest="200" HeightRequest="200" CornerRadius="5" BackgroundColor="LightGray" VerticalOptions="Center" Padding="0">
+                        <Image x:Name="ImagenMascota" Aspect="AspectFill" Source="{Binding MascotaImageSource}" />
+                    </Frame>
+                    <Button Grid.Column="1" 
+                            Background="#FFB256" 
+                            CornerRadius="80" 
+                            TextColor="Black" 
+                            Text="+" 
+                            Clicked="SubirImagenClicked" 
+                            HorizontalOptions="CenterAndExpand" 
+                            VerticalOptions="CenterAndExpand" />
+                </Grid>
+            </Frame>
+        </StackLayout>
+
+
+
+        <Label Text="Datos de tu mascota" Style="{StaticResource LabelEstilo}" FontAttributes="Bold" />
+        <StackLayout>
+
+
+            <StackLayout Orientation="Horizontal">
+                
+                <Label Text="Nombre:" Style="{StaticResource LabelEntryEstilo}" />
+                <Entry x:Name="nombre" Placeholder="Nombre" Style="{StaticResource EntryEstilo}"  />
+
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Raza:" Style="{StaticResource LabelEntryEstilo}"/>
+                <Entry x:Name="raza" Placeholder="Raza" Style="{StaticResource EntryEstilo}" />
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Edad:" Style="{StaticResource LabelEntryEstilo}" />
+                <Entry x:Name="edad" Placeholder="Edad" Style="{StaticResource EntryEstilo}" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Sexo:" Style="{StaticResource LabelEntryEstilo}" />
+                <Entry x:Name="sexo" Placeholder="Sexo" Style="{StaticResource EntryEstilo}" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Especie:" Style="{StaticResource LabelEntryEstilo}" />
+                <Entry x:Name="especie" Placeholder="Especie" Style="{StaticResource EntryEstilo}" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Tamaño:" Style="{StaticResource LabelEntryEstilo}" />
+                <Entry x:Name="tamannio" Placeholder="Tamaño" Style="{StaticResource EntryEstilo}" />
+            </StackLayout>
+        </StackLayout>
+
+        <Label Text="Descripción" Style="{StaticResource LabelEstilo}" FontAttributes="Bold" />
+        <Frame Padding="5" CornerRadius="5" BorderColor="#FECF50" HasShadow="False">
+            <Editor x:Name="descripcion" HeightRequest="100" TextColor="Black" />
+        </Frame>
+
+
+        <Button x:Name="BtnGuardar" Text="Agregar"  Style="{StaticResource BotonEstilo}" 
+                Margin="0,20,0,0" 
+                CornerRadius="20"
+                Padding="10"
+                WidthRequest="250"
+                HeightRequest="40"
+                Clicked="BtnGuardarMascotaClicked"/>
+    </StackLayout>
+
+</ContentPage>
