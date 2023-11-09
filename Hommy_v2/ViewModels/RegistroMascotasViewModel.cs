@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Hommy_v2.Data;
+using Hommy_v2.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Hommy_v2.ViewModels
@@ -12,6 +15,18 @@ namespace Hommy_v2.ViewModels
 
     public class RegistroMascotasViewModel : INotifyPropertyChanged
     {
+        
+        public Mascota Mascota {  get; set; }
+
+        public RegistroMascotasViewModel()
+        { 
+            Mascota = new Mascota();
+        }
+
+
+
+
+
         private ImageSource _mascotaImageSource;
 
         public ImageSource MascotaImageSource

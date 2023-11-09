@@ -113,13 +113,34 @@
         </Frame>
 
 
-        <Button x:Name="BtnGuardar" Text="Agregar"  Style="{StaticResource BotonEstilo}" 
-            Margin="0,20,0,0" 
+        <Grid HorizontalOptions="StartAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+             
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0"  x:Name="BtnGuardar" Text="Agregar"  Style="{StaticResource BotonEstilo}" 
+            Margin="0,30,0,10" 
             CornerRadius="20"
             Padding="10"
-            WidthRequest="250"
-            HeightRequest="40"
+            WidthRequest="200"
+            HeightRequest="100"
             Clicked="BtnGuardarMascotaClicked"/>
+
+            <Button Grid.Column="1" x:Name="BtnActualizar" Text="Actualizar"  Style="{StaticResource BotonEstilo}" 
+            Margin="0,30,0,10" 
+            CornerRadius="20"
+            Padding="10"
+            WidthRequest="200"
+            HeightRequest="70"
+            Clicked="BtnActualizarMascotaClicked"/>
+
+        </Grid>
+
+
+
+
     </StackLayout>
 
 </ContentPage>

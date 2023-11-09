@@ -16,5 +16,20 @@ namespace Hommy_v2.Views
         {
             InitializeComponent();
         }
+
+        private void OnSearchButtonPressed(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MascotasListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+
+        }
+
+        private void BtnEliminarMascotaClicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

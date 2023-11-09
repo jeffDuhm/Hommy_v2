@@ -13,6 +13,7 @@ namespace Hommy_v2.ViewModels
 {
     public class MascotasViewModel : INotifyPropertyChanged
     {
+
         private ObservableCollection<Mascota> _mascotas;
 
         public ObservableCollection<Mascota> Mascotas
@@ -25,16 +26,6 @@ namespace Hommy_v2.ViewModels
             }
         }
 
-        public ICommand EditarMascotaCommand => new Command<Mascota>(async (mascota) =>
-        {
-            if (mascota != null)
-            {
-                // Navegar a la página de registro y pasar la mascota seleccionada como parámetro
-                await App.Current.MainPage.Navigation.PushAsync(new RegistroMascotaPage(mascota.ID));
-            }
-        });
-
-
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -45,9 +36,22 @@ namespace Hommy_v2.ViewModels
 
         public MascotasViewModel()
         {
+            
 
 
         }
+
+        public ICommand EliminarMascota => new Command(async (object obj) =>
+        {
+            if (obj is Mascota mascota)
+            {
+                // Lógica para eliminar la mascota
+                await App.Context.EliminarMascotaAsync(mascota);
+                // Lógica para actualizar la lista de mascotas
+                await App.Context.ActualizarListaMascotas();
+            }
+        });
+
 
 
 

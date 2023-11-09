@@ -1,12 +1,122 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Hommy_v2.Views.SolicitudesPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+             x:Class="Hommy_v2.Views.SolicitudesPage"
+             xmlns:vm="clr-namespace:Hommy_v2.ViewModels"
+            xmlns:local="clr-namespace:Hommy_v2.Services"
+            Title="Mascotas">
+    
+    
+    <ContentPage.BindingContext>
+        <vm:MascotasViewModel />
+    </ContentPage.BindingContext>
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ConvertidorImagen x:Key="ConvertirdorImagen" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+
+        </Grid.RowDefinitions>
+
+        <SearchBar Grid.Row="0" x:Name="searchBar"
+Placeholder="Buscar mascotas..."
+SearchButtonPressed="OnSearchButtonPressed" />
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Padding ="10,0,10,0" Margin="10,20,0,20" Text="Agregar mascota"
+  
+        BackgroundColor="{StaticResource colorAccent}"
+        TextColor="Black" 
+        HorizontalOptions="Start" 
+        VerticalOptions="CenterAndExpand"
+        CornerRadius="20"
+        FontSize="10" Grid.Column="0"
+        WidthRequest="200"
+        HeightRequest="30"/>
+
+            <Button Padding ="10,0,10,0" Margin="20,30,20,30" Text="Adoptado"
+      
+        BackgroundColor="{StaticResource colorAccent}"
+        TextColor="Black" 
+        CornerRadius="20"
+        FontSize="10" Grid.Column="1"
+        WidthRequest="20"
+        HeightRequest="30"/>
+            <Button Padding ="10,0,10,0" Margin="20,30,20,30" Text="En Adopción"
+      
+        BackgroundColor="{StaticResource colorAccent}"
+        TextColor="Black" 
+        WidthRequest="20"
+        HeightRequest="30"
+        CornerRadius="20"
+        FontSize="10" Grid.Column="2"/>
+        </Grid>
+
+
+        <ScrollView Grid.Row="2" >
+            <StackLayout Orientation="Vertical" Padding="10,20,10,20" Spacing="10">
+
+                <ListView x:Name="listaMascotas" HasUnevenRows="True" ItemTapped="MascotasListView_ItemTapped">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+
+                                <ViewCell.ContextActions>
+                                    <MenuItem
+                                
+                                x:Name="BtnDelete"
+             
+                                Text="Eliminar"
+                                IsDestructive="True"
+                                Clicked="BtnEliminarMascotaClicked"
+                                CommandParameter="{Binding .}">
+
+                                    </MenuItem>
+                                </ViewCell.ContextActions>
+
+                                <Frame  BackgroundColor="{StaticResource colorPrimary}" Padding="10" Margin="5" CornerRadius="5" BorderColor="{StaticResource colorPrimaryDark}" HasShadow="True">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+
+                                        </Grid.ColumnDefinitions>
+                                        <Frame WidthRequest="70"  HeightRequest="70" CornerRadius="10"  VerticalOptions="Center" Padding="0">
+                                            <Image Source="{Binding Foto, Converter={StaticResource ConvertirdorImagen} }" Aspect="AspectFill" />
+                                        </Frame>
+                                        <Label Text="{Binding Nombre}" Padding ="15" TextColor="Black" Grid.Column="1" VerticalOptions="Center" />
+
+                                        <StackLayout Grid.Column="2" Orientation="Vertical">
+
+
+                                        </StackLayout>
+
+                                    </Grid>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                </ListView>
+
+            </StackLayout>
+        </ScrollView>
+
+
+    </Grid>
 </ContentPage>
