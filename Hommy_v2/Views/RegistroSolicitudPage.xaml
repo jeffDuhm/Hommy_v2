@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:vm="clr-namespace:Hommy_v2.ViewModels"
+             x:Class="Hommy_v2.Views.RegistroSolicitudPage"
+             Title="SOLICITUD DE ADOPCIÓN">
+    
+    <!--<ContentPage.BindingContext>
+        <vm:RegistroSolicitudViewModel/>
+    </ContentPage.BindingContext>-->
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+
+            <Style TargetType="Label" x:Key="LabelEstilo">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="18" />
+            </Style>
+
+            <Style TargetType="Label" x:Key="LabelEntryEstilo">
+                <Setter Property="TextColor" Value="#FECF50"/>
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+
+            <Style TargetType="Entry" x:Key="EntryEstilo">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="Center" />
+
+            </Style>
+
+            <Style TargetType="Button" x:Key="BotonEstilo">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="Background" Value="#FFB256" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <StackLayout Margin="20">
+
+        <Label Text="{Binding MascotaSeleccionada.Nombre}" 
+               Style="{StaticResource LabelEstilo}" 
+               FontAttributes="Bold" 
+               HorizontalTextAlignment="Center"
+               FontSize="45"
+               TextColor="Black"/>
+        
+        <Label Text="Queremos conocerte" FontSize="25" Style="{StaticResource LabelEstilo}" FontAttributes="Bold" />
+        
+        <StackLayout>
+
+            <StackLayout Orientation="Vertical">
+                
+                
+
+                <Label Text="Nombre del responsable:" Style="{StaticResource LabelEntryEstilo}" />
+                <Entry Text="{Binding SolicitanteTxt, Mode=TwoWay}" 
+                       IsEnabled="{Binding IsEnabledTxt}"
+                       Style="{StaticResource EntryEstilo}"  />
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical">
+
+                <Label Text="Dirección:" Style="{StaticResource LabelEntryEstilo}" />
+                <Entry Text="{Binding DireccionTxt, Mode=TwoWay}" 
+                       IsEnabled="{Binding IsEnabledTxt}"
+                       Style="{StaticResource EntryEstilo}"  />
+                        </StackLayout>
+
+            <StackLayout Orientation="Vertical">
+
+                <Label Text="Celular:" Style="{StaticResource LabelEntryEstilo}" />
+                <Entry Text="{Binding CelularTxt, Mode=TwoWay}" 
+                       IsEnabled="{Binding IsEnabledTxt}"
+                       Style="{StaticResource EntryEstilo}"
+                       Keyboard="Telephone"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical">
+
+                <Label Text="Correo Electrónico:" Style="{StaticResource LabelEntryEstilo}" />
+                <Entry Text="{Binding CorreoTxt, Mode=TwoWay}" 
+                       IsEnabled="{Binding IsEnabledTxt}"
+                       Style="{StaticResource EntryEstilo}"
+                       Keyboard="Email"
+                                   />
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical">
+
+                <Label Text="Edad:" Style="{StaticResource LabelEntryEstilo}" />
+                <Entry Text="{Binding EdadTxt, Mode=TwoWay}" 
+                       IsEnabled="{Binding IsEnabledTxt}"
+                       Style="{StaticResource EntryEstilo}"  />
+                        </StackLayout>
+
+
+        </StackLayout>
+
+        <Button Grid.Column="0" Text="Enviar"  Style="{StaticResource BotonEstilo}" 
+                Margin="0,30,0,10" 
+                CornerRadius="20"
+                Padding="10"
+                WidthRequest="200"
+                HeightRequest="50"
+                Command="{Binding RegisterCommand}"
+                IsEnabled="{Binding IsEnabledTxt, Mode=TwoWay}"
+            />
+       
+
+    </StackLayout>
+</ContentPage>

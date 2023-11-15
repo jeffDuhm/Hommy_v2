@@ -55,7 +55,7 @@
                 <Grid HorizontalOptions="Start">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="200" />
                     </Grid.ColumnDefinitions>
                     <Frame WidthRequest="200" HeightRequest="200" CornerRadius="5" BackgroundColor="LightGray" VerticalOptions="Center" Padding="0">
                         <Image x:Name="ImagenMascota" Aspect="AspectFill" Source="{Binding MascotaImageSource}" />

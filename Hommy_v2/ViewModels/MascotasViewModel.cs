@@ -41,16 +41,16 @@ namespace Hommy_v2.ViewModels
 
         }
 
-        public ICommand EliminarMascota => new Command(async (object obj) =>
-        {
-            if (obj is Mascota mascota)
-            {
-                // Lógica para eliminar la mascota
-                await App.Context.EliminarMascotaAsync(mascota);
-                // Lógica para actualizar la lista de mascotas
-                await App.Context.ActualizarListaMascotas();
-            }
-        });
+        //public ICommand EliminarMascota => new Command(async (object obj) =>
+        //{
+        //    if (obj is Mascota mascota)
+        //    {
+        //        // Lógica para eliminar la mascota
+        //        await App.Context.EliminarMascotaAsync(mascota);
+        //        // Lógica para actualizar la lista de mascotas
+        //        await App.Context.ActualizarListaMascotas();
+        //    }
+        //});
 
 
 

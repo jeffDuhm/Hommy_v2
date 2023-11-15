@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using System.Threading.Tasks;
-using Hommy_v2.Data;
-using SQLite;
+﻿using SQLite;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Hommy_v2.Models
@@ -22,7 +17,6 @@ namespace Hommy_v2.Models
         public string Especie { get; set; }
         public string Tamannio { get; set; }
         public string Descripcion { get; set; }
-
 
     }
 

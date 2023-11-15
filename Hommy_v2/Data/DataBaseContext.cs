@@ -12,16 +12,21 @@ namespace Hommy_v2.Data
 {
     public class DataBaseContext
     {
+        // Conexion
         public SQLiteAsyncConnection Connection { get; set; }
 
         public DataBaseContext(string path)
         {
             Connection = new SQLiteAsyncConnection(path);
+
+            //Tablas
             Connection.CreateTableAsync<Mascota>().Wait();
+            Connection.CreateTableAsync<Solicitud>().Wait();
         }
 
+        // CRUD - MASCOTAS
 
-        // Seleccionar Buscador
+        /* Method ->  SELECT BUSCAR*/
         public async Task<Mascota> ObtenerMascotaPorId(int id)
         {
             return await Connection.Table<Mascota>()
@@ -29,14 +34,13 @@ namespace Hommy_v2.Data
                 .FirstOrDefaultAsync();
         }
 
-
-        //  Seleccionar
+        /* Method ->  SELECT */
         public async Task<List<Mascota>> ObtenerTodasLasMascotasAsync()
         {
             return await Connection.Table<Mascota>().ToListAsync();
         }
 
-        // Guardar y Actualizar
+        /* Method ->  GUARDAR Y ACTUALIZAR*/
         public async Task<int> InsertarMascotaAsync(Mascota mascota)
         {
             return await Connection.InsertAsync(mascota);
@@ -49,11 +53,11 @@ namespace Hommy_v2.Data
 
         }
 
+        /* Method ->  ELIMINAR */
         public async Task<int> EliminarMascotaAsync(Mascota mascota)
         {
             return await Connection.DeleteAsync(mascota);
         }
-
 
 
         public async Task ActualizarListaMascotas()
@@ -62,8 +66,64 @@ namespace Hommy_v2.Data
             await App.Context.ObtenerTodasLasMascotasAsync();
         }
 
-        
 
+        // CRUD - SOLICITUDES
+
+        /* Method ->  SELECT BUSCAR*/
+        public Task<Solicitud> ObtenerSolicitudIdAsync(int id)
+        {
+            return Connection.Table<Solicitud>()
+                .Where(s => s.SolicitudID == id)
+                .FirstOrDefaultAsync();
+        }
+
+        /* Method ->  SELECT */
+        public Task<List<Solicitud>> ObtenerSolicitud()
+        {
+            return Connection.Table<Solicitud>().ToListAsync();
+        }
+
+        /* Method ->  GUARDAR Y ACTUALIZAR*/
+        public Task<int> GuardarSolicitudAsync(Solicitud solicitud)
+        {
+            if (solicitud.SolicitudID != 0)
+            {
+                return Connection.UpdateAsync(solicitud);
+            }
+            else
+            {
+                return Connection.InsertAsync(solicitud);
+
+            }
+
+        }
+
+        public async Task ActualizarEstadoSolicitudAsync(int solicitudId, string nuevoEstado)
+        {
+            var solicitud = await Connection.Table<Solicitud>()
+                .Where(s => s.SolicitudID == solicitudId)
+                .FirstOrDefaultAsync();
+
+            if (solicitud != null)
+            {
+                solicitud.Estado = nuevoEstado;
+                await Connection.UpdateAsync(solicitud);
+            }
+        }
+
+
+        /* Method ->  ELIMINAR */
+        public Task<int> EliminarSolicitudAsync(Solicitud solicitud)
+        {
+            return Connection.DeleteAsync(solicitud);
+        }
+
+        public async Task<int> ActualizarSolicitudAsync(Solicitud solicitud)
+        {
+
+            return await Connection.UpdateAsync(solicitud);
+
+        }
 
     }
 }

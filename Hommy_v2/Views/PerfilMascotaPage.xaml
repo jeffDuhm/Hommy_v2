@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Hommy_v2.Views.PerfilMascotaPage"
+             xmlns:vm="clr-namespace:Hommy_v2.ViewModels"
+             xmlns:local="clr-namespace:Hommy_v2.Services"
+             Title="Perfil"
+             >
+
+    <ContentPage.BindingContext>
+        <vm:MascotasViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            
+            <local:ConvertidorImagen x:Key="ConvertirdorImagen" />
+
+            <Style TargetType="Label" x:Key="LabelEstilo">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="18" />
+            </Style>
+
+            <Style TargetType="Label" x:Key="LabelEntryEstilo">
+                <Setter Property="TextColor" Value="#FECF50"/>
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+
+            <Style TargetType="Entry" x:Key="EntryEstilo">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="Center" />
+
+            </Style>
+
+            <Style TargetType="Button" x:Key="BotonEstilo">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="Background" Value="#FFB256" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <StackLayout Margin="20">
+
+
+        <StackLayout HorizontalOptions="Center">
+            <Frame WidthRequest="200" HeightRequest="200" CornerRadius="5" BackgroundColor="LightGray" VerticalOptions="Center" Padding="0">
+                <Image Source="{Binding Foto, Converter={StaticResource ConvertirdorImagen} }" Aspect="AspectFill" />
+            </Frame>
+        </StackLayout>
+
+
+        <Label Text="{Binding Nombre}" 
+               Style="{StaticResource LabelEstilo}" 
+               FontAttributes="Bold" 
+               HorizontalTextAlignment="Center"
+               FontSize="25"/>
+        <StackLayout Spacing="-10">
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Raza:" Style="{StaticResource LabelEntryEstilo}"/>
+                <Label Text="{Binding Raza}" Padding ="15" TextColor="Black" Grid.Column="1" VerticalOptions="Center" />
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Edad:" Style="{StaticResource LabelEntryEstilo}" />
+                <Label Text="{Binding Edad}" Padding ="15" TextColor="Black" Grid.Column="1" VerticalOptions="Center" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Sexo:" Style="{StaticResource LabelEntryEstilo}" />
+                <Label Text="{Binding Sexo}" Padding ="15" TextColor="Black" Grid.Column="1" VerticalOptions="Center" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Especie:" Style="{StaticResource LabelEntryEstilo}" />
+                <Label Text="{Binding Especie}" Padding ="15" TextColor="Black" Grid.Column="1" VerticalOptions="Center" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Tamaño:" Style="{StaticResource LabelEntryEstilo}" />
+                <Label Text="{Binding Tamannio}" Padding ="15" TextColor="Black" Grid.Column="1" VerticalOptions="Center" />
+            </StackLayout>
+        </StackLayout>
+
+        <Label Text="Descripción" Style="{StaticResource LabelEstilo}" FontAttributes="Bold" />
+        <Frame  Padding="0" CornerRadius="5" HeightRequest="120"  BorderColor="#FECF50" HasShadow="False">
+            <Label Text="{Binding Descripcion}"
+                   Padding ="15" 
+                   TextColor="Black" 
+                   Grid.Column="1" 
+                   VerticalOptions="StartAndExpand" />
+        </Frame>
+
+
+        <Grid HorizontalOptions="StartAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0"  x:Name="BtnGuardar" Text="Adoptar"  Style="{StaticResource BotonEstilo}" 
+        Margin="0,30,0,10" 
+        CornerRadius="20"
+        Padding="10"
+        WidthRequest="200"
+        HeightRequest="50"
+        Clicked="AdoptarMascotaClicked"
+      />
+
+            <Button Grid.Column="1" x:Name="BtnActualizar" Text="Donar"  Style="{StaticResource BotonEstilo}" 
+        Margin="0,30,0,10" 
+        CornerRadius="20"
+        Padding="10"
+        WidthRequest="200"
+        HeightRequest="50"
+        />
+
+        </Grid>
+
+
+
+
+    </StackLayout>
+</ContentPage>

@@ -97,6 +97,14 @@ namespace Hommy_v2.Views
         {
 
         }
+
+        private async void VerPerfilMascota(object sender, EventArgs e)
+        {
+            if (sender is Button button && button.BindingContext is Mascota mascota)
+            {
+                await Navigation.PushAsync(new PerfilMascotaPage(mascota));
+            }
+        }
     }
 
 

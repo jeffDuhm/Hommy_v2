@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Hommy_v2.Models;
+using Hommy_v2.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,26 +17,52 @@ namespace Hommy_v2.Views
         public SolicitudesPage()
         {
             InitializeComponent();
+            
+
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            CargarSolicitudes();
 
 
         }
+
+
+        private async void CargarSolicitudes()
+        {
+            var solicitudes = await App.Context.ObtenerSolicitud();
+            listaSolicitudes.ItemsSource = solicitudes;
+
+        }
+
+
 
         private void OnSearchButtonPressed(object sender, EventArgs e)
         {
 
         }
 
-        private void MascotasListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        private async void BtnEliminarSolicitudClicked(object sender, EventArgs e)
         {
-
+            if (await DisplayAlert("Confirmación", "¿Está seguro de eliminar el elemento?", "Sí", "No"))
+            {
+                var solicitud = (Solicitud)(sender as MenuItem).CommandParameter;
+                var result = await App.Context.EliminarSolicitudAsync(solicitud);
+                if (result == 1)
+                {
+                    CargarSolicitudes();
+                }
+            }
         }
 
-        private void BtnEliminarMascotaClicked(object sender, EventArgs e)
+        private async void VerSolicitudClicked(object sender, EventArgs e)
         {
+            if (sender is Button button && button.BindingContext is Solicitud solicitud)
+            {
+                await Navigation.PushAsync(new DetalleSolicitudPage(solicitud));
+            }
+
 
         }
     }
