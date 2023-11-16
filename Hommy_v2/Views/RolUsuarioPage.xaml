@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Hommy_v2.Views.RolUsuarioPage"
+             BackgroundColor="#FECF50">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="200" />
+                <RowDefinition Height="250" />
+
+
+            </Grid.RowDefinitions>
+
+
+            <StackLayout Grid.Row="1" 
+                 Margin="20"
+                 HorizontalOptions="Center">
+
+                <Label Text="¿Qué quieres hacer?"
+               TextColor="Black"
+               FontSize="30"
+               HorizontalTextAlignment="Center"/>
+                
+            </StackLayout >
+
+            <StackLayout Grid.Row="2" HorizontalOptions="Center">
+
+                <Button Text="Administrar refugio"
+                        ImageSource="refugio"
+                        BackgroundColor="#F9FAD1"
+                        TextColor="Black"
+                        CornerRadius="30"
+                        WidthRequest="300"
+                        HeightRequest="200"
+                        Clicked="IrRefugioClicked"
+                        >
+                </Button>
+
+
+            </StackLayout>
+
+
+            <StackLayout  Grid.Row="3" HorizontalOptions="Center">
+                <Button Text="Adoptar una mascota" 
+                        TextColor="Black"
+                        ImageSource="usuario"
+                        BackgroundColor="#F9FAD1"
+                        CornerRadius="30"
+                        WidthRequest="300"
+                        HeightRequest="200"
+                        Clicked="IrUsuarioClicked"
+                       />
+            </StackLayout>
+
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Hommy_v2.Views.RegistroUsuarioPage"
+             BackgroundColor="White">
+    
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="White">
+            <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="25" VerticalOptions="CenterAndExpand">
+            </Grid>
+            
+            <Image Source="Hommy_logo" HeightRequest="150" WidthRequest="150"/>
+
+
+            <!-- Main title-->
+            <Frame BackgroundColor="#FECF50" CornerRadius="100" Padding="50" Margin="0,40,0,-70">
+                <StackLayout Spacing="10">
+
+                    
+                    <Label Grid.Row="1"  
+                           FontAttributes="Bold" 
+                           TextColor="#000000"
+                           FontSize="30" 
+                           HorizontalTextAlignment="Center" 
+                           Text="¡Regístrate!" 
+                           Padding="20"/>
+                    <!--otros-->
+
+                 
+                    <Frame BorderColor="#FFFFFF" 
+                           CornerRadius="20" 
+                           Padding="5"
+                           WidthRequest="30"
+                           BackgroundColor="#FFFFFF"
+                           >
+                        <Entry Grid.Row="2" 
+                               Placeholder="Nombre"
+                               BackgroundColor="#fdfbf6" 
+                               FontSize="15"
+                               PlaceholderColor="#C3C3C3"
+                               TextColor="Black"
+                               Text="{Binding Nombre, Mode=TwoWay}"
+                                IsEnabled="{Binding IsEnabledTxt}"/>
+                    </Frame>
+                    <!--otros-->
+
+                    
+                    <Frame BorderColor="#FFFFFF"
+                           CornerRadius="20"
+                           Padding="5" 
+                           BackgroundColor="#FFFFFF">
+                        <Entry Grid.Row="3" 
+                               Placeholder="Correo electrónico"
+                               Keyboard="Email"
+                                BackgroundColor="#fdfbf6" 
+                                FontSize="15"
+                                PlaceholderColor="#C3C3C3"
+                               TextColor="Black"
+                               Text="{Binding Correo, Mode=TwoWay}"
+IsEnabled="{Binding IsEnabledTxt}"/>
+                    </Frame>
+                    <!--otros-->
+
+
+                    
+                    <Frame BorderColor="#FFFFFF"
+                           CornerRadius="20"
+                           Padding="5"
+                           BackgroundColor="#FFFFFF" >
+                        
+                        
+
+                        <Picker Title="Seleccione un rol" SelectedIndex="0" SelectedItem="{Binding Rol, Mode=TwoWay}"
+                                IsEnabled="{Binding IsEnabledTxt}" 
+                                
+                                TextColor="Black" FontSize="15">
+                            
+                            <Picker.ItemsSource>
+                                
+                                <x:Array Type="{x:Type x:String}" >
+                                    <x:String >Propietario</x:String>
+                                    <x:String>Usuario</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                            
+                        </Picker>
+
+                    </Frame>
+                    <!--end otros-->
+
+                    <Frame BorderColor="#FFFFFF"
+                       CornerRadius="20"
+                       Padding="5" 
+                       BackgroundColor="#FFFFFF" >
+                       <Entry Grid.Row="5"
+                           IsPassword="True" 
+                           Placeholder="Contraseña" 
+                           BackgroundColor="#fdfbf6" 
+                             FontSize="15"
+                             PlaceholderColor="#C3C3C3"
+                            TextColor="Black"
+                              Text="{Binding Contrasennia, Mode=TwoWay}"
+                            IsEnabled="{Binding IsEnabledTxt}"/>
+                                    </Frame>
+
+
+                    <Frame BorderColor="#FFFFFF"
+                           CornerRadius="20"
+                           Padding="5" 
+                           BackgroundColor="#FFFFFF" >
+                        <Entry Grid.Row="6" 
+                               IsPassword="True" 
+                               Placeholder="Confirmar contraseña" 
+                               BackgroundColor="#fdfbf6" 
+                              FontSize="15"
+                              PlaceholderColor="#C3C3C3"
+                             TextColor="Black"
+                               Text="{Binding ConfirmarContrasennia, Mode=TwoWay}"
+                                IsEnabled="{Binding IsEnabledTxt}"/>
+                    </Frame>
+
+                    <!--otros-->
+
+                    <Button Margin="10" 
+                            Grid.Row="7"   
+                            BackgroundColor="#31363A" 
+                            Text="Registrarse" 
+                            TextColor="White" 
+                            CornerRadius="20" 
+                            FontSize="15" 
+                            FontAttributes="Bold"
+                            HeightRequest="50"
+                            WidthRequest="180"
+                            HorizontalOptions="Center"
+                            Command="{Binding RegisterCommand}"
+                            IsEnabled="{Binding IsEnabledTxt, Mode=TwoWay}"/>
+                    <Button
+                        Grid.Row="8"
+                        Text="¿Ya tienes una cuenta? Iniciar sesión"
+                        TextColor="#31363A"
+                        BackgroundColor="Transparent"
+                        FontSize="12"
+                        Margin="0,0,0,40"
+                        Clicked="IrLoginClicked"
+                        />
+                    
+
+                </StackLayout>
+            </Frame>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

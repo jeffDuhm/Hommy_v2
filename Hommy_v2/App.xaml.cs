@@ -16,7 +16,7 @@ namespace Hommy_v2
             InitializeComponent();
             InitializeDatabase();
             DependencyService.Register<MockDataStore>();
-            MainPage = new AppShell();
+            MainPage = new SplashScreenHommy();
 
             
         }

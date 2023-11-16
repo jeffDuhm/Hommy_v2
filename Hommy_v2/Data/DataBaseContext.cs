@@ -22,6 +22,7 @@ namespace Hommy_v2.Data
             //Tablas
             Connection.CreateTableAsync<Mascota>().Wait();
             Connection.CreateTableAsync<Solicitud>().Wait();
+            Connection.CreateTableAsync<Usuario>().Wait();
         }
 
         // CRUD - MASCOTAS
@@ -125,5 +126,41 @@ namespace Hommy_v2.Data
 
         }
 
+
+        // CRUD - USUARIOS
+
+        /* Method ->  SELECT BUSCAR*/
+        public Task<Usuario> GetUserModelAsync(int id)
+        {
+            return Connection.Table<Usuario>()
+                .Where(i => i.UsuarioID == id)
+                .FirstOrDefaultAsync();
+        }
+
+        /* Method ->  SELECT */
+        public Task<List<Usuario>> GetUserModel()
+        {
+            return Connection.Table<Usuario>().ToListAsync();
+        }
+
+        /* Method ->  GUARDAR Y ACTUALIZAR*/
+        public Task<int> GuardarUsuarioAsync(Usuario usuario)
+        {
+            if (usuario.UsuarioID != 0)
+            {
+                return Connection.UpdateAsync(usuario);
+            }
+            else
+            {
+                return Connection.InsertAsync(usuario);
+
+            }
+
+        }
+
+        public Task<List<Usuario>> ValidarUsuarios(string correo, string contrasennia)
+        {
+            return Connection.QueryAsync<Usuario>("SELECT * FROM Usuario WHERE Correo = '" + correo + "'AND Contrasennia = '" + contrasennia + "'");
+        }
     }
 }

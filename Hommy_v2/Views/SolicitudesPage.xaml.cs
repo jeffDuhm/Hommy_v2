@@ -62,7 +62,12 @@ namespace Hommy_v2.Views
             {
                 await Navigation.PushAsync(new DetalleSolicitudPage(solicitud));
             }
-
+            //if (sender is Button button && button.BindingContext is Solicitud solicitud)
+            //{
+            //    var registroSolicitudViewModel = new RegistroSolicitudViewModel(solicitud);
+            //    var detalleSolicitudPage = new DetalleSolicitudPage(registroSolicitudViewModel);
+            //    await Navigation.PushAsync(detalleSolicitudPage);
+            //}
 
         }
     }

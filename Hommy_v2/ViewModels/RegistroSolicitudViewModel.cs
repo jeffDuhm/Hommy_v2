@@ -23,7 +23,7 @@ namespace Hommy_v2.ViewModels
         public string edad;
 
         public Mascota MascotaSeleccionada { get; set; }
-        public Solicitud solicitud { get; set; }
+
         
 
         public bool isRunning;
@@ -90,20 +90,6 @@ namespace Hommy_v2.ViewModels
             }
         }
 
-        public ICommand AprobarCommand
-        {
-            get
-            {
-                return new RelayCommand(Aprobar);
-            }
-        }
-        public ICommand RechazarCommand
-        {
-            get
-            {
-                return new RelayCommand(Rechazar);
-            }
-        }
         //Methods
 
         private async void RegistrarSolicitud()
@@ -179,22 +165,57 @@ namespace Hommy_v2.ViewModels
             IsVisibleTxt = false;
             IsEnabledTxt = true;
 
-        }
-
-        private  void Aprobar()
-        {
-
-            Debug.WriteLine("AprobarSolicitud ejecutado");
-        }
-
-        private void Rechazar()
-        {
-
-            Debug.WriteLine("RechazarSolicitud ejecutado");
+            await Application.Current.MainPage.Navigation.PopAsync();
 
         }
-
         
+
+        //private readonly Solicitud solicitud;  // La solicitud actual mostrada en la página
+
+        //// Comandos
+        //public ICommand AprobarCommand { get; }
+        //public ICommand RechazarCommand { get; }
+
+
+
+        //private void AprobarSolicitud()
+        //{
+        //    // Lógica para aprobar la solicitud
+        //    CambiarEstado("Aprobado");
+        //    ActualizarListaSolicitudes();
+        //    // Actualizar el estado de la solicitud y notificar cambios
+
+        //}
+
+        //private void RechazarSolicitud()
+        //{
+        //    // Lógica para rechazar la solicitud
+        //    CambiarEstado("Rechazado");
+        //    ActualizarListaSolicitudes();
+
+        //    // Actualizar el estado de la solicitud y notificar cambios
+        //}
+
+
+        //private async void ActualizarListaSolicitudes()
+        //{
+
+        //    // Actualizar la lista de solicitudes y notificar cambios
+
+        //    await App.Context.ActualizarSolicitudAsync(solicitud);
+        //}
+
+        //// Método para cambiar el estado de la solicitud
+        //private async void CambiarEstado(string nuevoEstado)
+        //{
+        //    solicitud.Estado = nuevoEstado;
+
+        //    // Lógica adicional si es necesario, como guardar en la base de datos
+        //    await App.Context.ActualizarEstadoSolicitudAsync(solicitud.SolicitudID, nuevoEstado);
+        //}
+
+
+
         //Constructor
         public RegistroSolicitudViewModel(Mascota mascotaSeleccionada)
         {
@@ -206,6 +227,17 @@ namespace Hommy_v2.ViewModels
         {
             IsEnabledTxt = true;
         }
+
+        //public RegistroSolicitudViewModel(Solicitud solicitud)
+        //{
+        //    this.solicitud = solicitud;
+        //    AprobarCommand = new Command(AprobarSolicitud);
+        //    RechazarCommand = new Command(RechazarSolicitud);
+        //    IsEnabledTxt = true;
+        //}
+
+
+
     }
 
     

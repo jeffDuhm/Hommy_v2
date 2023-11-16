@@ -1,24 +1,28 @@
-﻿using Hommy_v2.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Hommy_v2.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage : ContentPage
+    public partial class RolUsuarioPage : ContentPage
     {
-        public LoginPage()
+        public RolUsuarioPage()
         {
             InitializeComponent();
-            BindingContext = new LoginViewModel();
         }
 
-        private void RegistrarseClicked(object sender, EventArgs e)
+        private void IrRefugioClicked(object sender, EventArgs e)
+        {
+            Application.Current.MainPage = new RegistroUsuarioPage(); // Me permite ir a otra page
+        }
+
+        private void IrUsuarioClicked(object sender, EventArgs e)
         {
             Application.Current.MainPage = new RegistroUsuarioPage(); // Me permite ir a otra page
         }

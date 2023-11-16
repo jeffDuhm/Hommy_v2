@@ -1,12 +1,137 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Hommy_v2.Views.InicioRefugioPage">
+             x:Class="Hommy_v2.Views.InicioRefugioPage"
+             xmlns:Microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        
+     
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="400" />
+                <RowDefinition Height="500" />
+
+
+            </Grid.RowDefinitions>
+
+
+            <StackLayout Grid.Row="1" 
+         Margin="20"
+         HorizontalOptions="Center">
+
+                    <Label Text="Donaciones" HorizontalOptions="Start" TextColor="Black"
+           FontSize="20"/>
+
+                    <Microcharts:ChartView x:Name="GraficaDonaciones" HeightRequest="300" 
+                                           WidthRequest="400"
+                          
+                           />
+              
+
+            </StackLayout >
+
+            <StackLayout Grid.Row="2" HorizontalOptions="Center">
+
+
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+
+                        </Grid.ColumnDefinitions>
+
+                    <StackLayout Grid.Column="1" Orientation="Vertical" 
+                                                                      
+                                 >
+                        <Frame BackgroundColor="{StaticResource colorPrimary}"
+                               HeightRequest="150"
+                               CornerRadius="20">
+
+                            <StackLayout>
+                                <Frame BackgroundColor="{StaticResource colorPrimaryDark}"
+                               HeightRequest="20"
+                               CornerRadius="20" Padding="15">
+                                    <StackLayout Padding="5" HorizontalOptions="Center">
+                                        <Label Text="Solicitudes"
+                                            FontAttributes="Bold"
+                                            HorizontalOptions="Center"
+                                         
+                                            TextColor="Black"
+
+                                            />
+                                    </StackLayout>
+                                    
+                                </Frame>
+                                    
+                                <StackLayout Orientation="Horizontal" Spacing="40">
+                                    <Label Text="Aprobados"
+                                           HorizontalOptions="Start"
+                                           TextColor="Black" 
+                                           />
+
+                                    <Label Text="10"
+                                           HorizontalOptions="Start"
+                                           TextColor="Black" 
+                                           />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Spacing="40">
+                                    <Label Text="Rechazados"
+                                           HorizontalOptions="Start"
+                                           TextColor="Black" 
+                                           />
+
+                                    <Label Text="5"
+                                            HorizontalOptions="Start"
+                                            TextColor="Black" 
+                                            />
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal" Spacing="40">
+                                    <Label Text="Pendientes"
+                                           HorizontalOptions="Start"
+                                           TextColor="Black" 
+                                           />
+
+                                    <Label Text="30"
+                                           HorizontalOptions="Start"
+                                           TextColor="Black" 
+                                           />
+                                </StackLayout>
+
+                            </StackLayout>
+                            
+
+
+                        </Frame>
+
+
+                     </StackLayout>
+
+
+                    </Grid>
+             
+
+            </StackLayout>
+
+
+            <StackLayout  Grid.Row="3" HorizontalOptions="Center">
+                <Button Text="Adoptar una mascota" 
+                TextColor="Black"
+                ImageSource="usuario"
+                BackgroundColor="#F9FAD1"
+                CornerRadius="30"
+                WidthRequest="300"
+                HeightRequest="200"
+            
+               />
+            </StackLayout>
+
+
+        </Grid>
+
+
     </ContentPage.Content>
 </ContentPage>

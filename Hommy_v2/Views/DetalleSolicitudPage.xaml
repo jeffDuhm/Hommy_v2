@@ -46,7 +46,8 @@
 
     <StackLayout Margin="20">
 
-        <Label Text="{Binding Solicitud.Solicitante}" 
+     
+        <Label Text="{Binding NombreSolicitante}" 
                Style="{StaticResource LabelEstilo}" 
                FontAttributes="Bold" 
                HorizontalTextAlignment="Center"
@@ -85,7 +86,7 @@
         <StackLayout Orientation="Vertical" >
 
             <Label Text="Nombre del responsable:" Style="{StaticResource LabelEntryEstilo}" />
-            <Label Text="{Binding Solicitante}" Style="{StaticResource LabelEntryEstilo}" TextColor="Black" />
+            <Label Text="{Binding NombreSolicitante}" Style="{StaticResource LabelEntryEstilo}" TextColor="Black" />
 
         </StackLayout>
 
@@ -128,7 +129,8 @@
             WidthRequest="200"
             HeightRequest="50"
 
-            Command="{Binding AprobarCommand}"            
+            Command="{Binding AprobarCommand}"
+                       
             />
 
                 <Button Grid.Column="1" x:Name="BtnRechazar" Text="Rechazar"  Style="{StaticResource BotonEstilo}" 

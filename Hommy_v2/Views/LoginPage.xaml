@@ -7,8 +7,94 @@
              x:Class="Hommy_v2.Views.LoginPage"
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
-        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
+        <StackLayout BackgroundColor="White">
+            <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="25" VerticalOptions="CenterAndExpand">
+            </Grid>
+
+            <Image Source="Hommy_logo" HeightRequest="150" WidthRequest="150"/>
+
+
+            <!-- Main title-->
+            <Frame BackgroundColor="#FECF50" CornerRadius="100" Padding="50" Margin="0,50,0,-70">
+                <StackLayout Spacing="20">
+
+
+                    <Label Grid.Row="1"  
+                   FontAttributes="Bold" 
+                   TextColor="#000000"
+                   FontSize="25" 
+                   HorizontalTextAlignment="Center" 
+                   Text="¡Impulsemos el cambio positivo!" 
+                   Padding="10"
+                     Margin="0,0,0,50"/>
+                    <!--otros-->
+
+
+                    <Frame BorderColor="#FFFFFF" 
+                   CornerRadius="20" 
+                   Padding="5"
+                   WidthRequest="30"
+                           Margin="0,0,0,15"
+                   BackgroundColor="#FFFFFF"
+                   >
+                        <Entry Grid.Row="2" 
+                       Placeholder="Correo electrónico"
+                       BackgroundColor="#fdfbf6" 
+                       Keyboard="Email"
+                       FontSize="15"
+                       PlaceholderColor="#C3C3C3"
+                       TextColor="Black"
+                       Text="{Binding Correo, Mode=TwoWay}"
+                       IsEnabled="{Binding IsEnabledTxt}"/>
+                    </Frame>
+                    <!--otros-->
+
+
+                    <Frame BorderColor="#FFFFFF"
+                   CornerRadius="20"
+                   Padding="5" 
+                    Margin="0,0,0,10"
+                   BackgroundColor="#FFFFFF">
+                        <Entry Grid.Row="3" 
+                               IsPassword="True"
+                       Placeholder="Contraseña"
+                        BackgroundColor="#fdfbf6" 
+                        FontSize="15"
+                        PlaceholderColor="#C3C3C3"
+                       TextColor="Black"
+                       Text="{Binding Contrasennia, Mode=TwoWay}"
+                        IsEnabled="{Binding IsEnabledTxt}"
+                     />
+                    </Frame>
+                    <!--otros-->
+
+                    <Button Margin="10" 
+                    Grid.Row="7"   
+                    BackgroundColor="#31363A" 
+                    Text="Iniciar sesión" 
+                    TextColor="White" 
+                    CornerRadius="20" 
+                    FontSize="15" 
+                    FontAttributes="Bold"
+                    HeightRequest="50"
+                    WidthRequest="180"
+                    HorizontalOptions="Center"
+                    Command="{Binding LoginCommand}"
+                    IsEnabled="{Binding IsEnabledTxt, Mode=TwoWay}"/>
+                    <Button
+                Grid.Row="8"
+                Text="¿Aún no tienes una cuenta? Regístrate"
+                TextColor="#31363A"
+                BackgroundColor="Transparent"
+                FontSize="12"
+                Margin="0,0,0,40"
+                        Clicked="RegistrarseClicked"
+                />
+
+
+                </StackLayout>
+            </Frame>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

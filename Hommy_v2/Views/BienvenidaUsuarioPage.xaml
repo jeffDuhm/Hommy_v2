@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Hommy_v2.Views.BienvenidaUsuarioPage"
+             BackgroundColor="#FECF50">
+    <ContentPage.Content>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="350" />
+  
+
+            </Grid.RowDefinitions>
+
+            <!--<Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>-->
+            
+            <StackLayout Grid.Row="1" 
+                         BackgroundColor="#FECF50" 
+                         Margin="20"
+                         HorizontalOptions="Center">
+                <Label Text="¡Cuida, comparte y adopta con Hommy!"
+                       TextColor="Black"
+                       FontSize="30"
+                       HorizontalTextAlignment="Center"/>
+
+                <Label Margin="5" Text="Conecta con refugios de mascotas, encuentra a tu compañero perfecto y marca la diferencia en la vida de mascotas necesitadas con Hommy. Únete a nuestra comunidad apasionada y únete al movimiento para dar hogares amorosos a cada animal que lo necesite."
+                       HorizontalOptions="CenterAndExpand"
+                       TextColor="Black"
+                       FontSize="18"
+                       HorizontalTextAlignment="Start"
+                       />
+            </StackLayout >
+
+            <StackLayout Grid.Row="2" HorizontalOptions="Center">
+                    <Image Source="hommy_bienvenida.png" 
+                HeightRequest="300" />
+
+                </StackLayout>
+
+
+            <StackLayout  Grid.Row="3" HorizontalOptions="Center">
+                <Button Text="Comenzar" 
+                        BackgroundColor="#31363A"
+                        CornerRadius="30"
+                        WidthRequest="200"
+                        HeightRequest="50"
+                        Clicked="ElegirRolClicked"/>
+            </StackLayout>
+
+            
+        </Grid>
+        
+    
+
+    </ContentPage.Content>
+</ContentPage>

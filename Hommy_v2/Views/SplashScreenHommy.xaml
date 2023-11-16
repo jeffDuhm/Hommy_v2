@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Hommy_v2.Views.SplashScreenHommy"
+             BackgroundColor="#FECF50">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#FECF50" 
+         HorizontalOptions="CenterAndExpand"
+         VerticalOptions="CenterAndExpand">
+            <Image x:Name="imgLogo" 
+        Source="hommy_logo.png" 
+        HeightRequest="150" 
+ 
+/>
+            <Label TextColor="Black" 
+        Text="From"
+        HorizontalOptions="CenterAndExpand"
+/>
+            <Label TextColor="Black" 
+        Text="J E F F D U H M" 
+        FontSize="18"
+        HorizontalOptions="CenterAndExpand"
+/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

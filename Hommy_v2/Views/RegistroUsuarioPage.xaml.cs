@@ -4,23 +4,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Hommy_v2.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage : ContentPage
+    public partial class RegistroUsuarioPage : ContentPage
     {
-        public LoginPage()
+        public RegistroUsuarioPage()
         {
             InitializeComponent();
-            BindingContext = new LoginViewModel();
+            BindingContext = new RegistroViewModel();
         }
 
-        private void RegistrarseClicked(object sender, EventArgs e)
+        private void IrLoginClicked(object sender, EventArgs e)
         {
-            Application.Current.MainPage = new RegistroUsuarioPage(); // Me permite ir a otra page
+            Application.Current.MainPage = new LoginPage(); // Me permite ir a otra page
         }
     }
 }

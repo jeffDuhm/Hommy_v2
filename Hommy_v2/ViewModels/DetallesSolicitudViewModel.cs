@@ -10,7 +10,18 @@ namespace Hommy_v2.ViewModels
 {
     public class DetallesSolicitudViewModel : BaseViewModel
     {
+        
         private readonly Solicitud solicitud;  // La solicitud actual mostrada en la página
+        public string NombreSolicitante => solicitud.Solicitante;
+        public string NombreMascota => solicitud.NombreMascota;
+        public string Estado => solicitud.Estado;
+        public DateTime FechaSolicitud => solicitud.FechaSolicitud;
+        public string Direccion => solicitud.Direccion;
+        public string Celular => solicitud.Celular;
+        public string Correo => solicitud.Correo;
+        public string Edad => solicitud.Edad;
+        
+
 
         // Constructor que recibe la solicitud
         public DetallesSolicitudViewModel(Solicitud solicitud)
@@ -20,26 +31,31 @@ namespace Hommy_v2.ViewModels
             RechazarCommand = new Command(RechazarSolicitud);
         }
 
+        public DetallesSolicitudViewModel()
+        {
+        }
+
         // Comandos
         public ICommand AprobarCommand { get; }
         public ICommand RechazarCommand { get; }
 
 
-        private void AprobarSolicitud()
+        private async void AprobarSolicitud()
         {
             // Lógica para aprobar la solicitud
             CambiarEstado("Aprobado");
-            ActualizarListaSolicitudes();
             // Actualizar el estado de la solicitud y notificar cambios
+            ActualizarListaSolicitudes();
+            await Application.Current.MainPage.Navigation.PopAsync();
 
         }
 
-        private void RechazarSolicitud()
+        private async void RechazarSolicitud()
         {
             // Lógica para rechazar la solicitud
             CambiarEstado("Rechazado");
             ActualizarListaSolicitudes();
-            // Actualizar el estado de la solicitud y notificar cambios
+            await Application.Current.MainPage.Navigation.PopAsync();
         }
 
 
