@@ -31,12 +31,6 @@ namespace Hommy_v2.Views
                 await Navigation.PushAsync(registroSolicitudPage);
             }
 
-            ////Crear la página de registro de solicitud y pasar la información de la mascota
-            //if (sender is Button button && button.BindingContext is Mascota mascota)
-            //{
-            //    await Navigation.PushAsync(new RegistroSolicitudPage(mascota));
-            //}
-            //await Navigation.PushAsync(new RegistroSolicitudPage());
 
         }
     }

@@ -4,7 +4,8 @@
              x:Class="Hommy_v2.Views.MascotasPage"
              xmlns:vm="clr-namespace:Hommy_v2.ViewModels"
              xmlns:local="clr-namespace:Hommy_v2.Services"
-             Title="Mascotas">
+             Title="Mascotas"
+             >
 
     <ContentPage.BindingContext>
         <vm:MascotasViewModel />
@@ -100,7 +101,7 @@
                                         </Frame>
                                         <Label Text="{Binding Nombre}" Padding ="15" TextColor="Black" Grid.Column="1" VerticalOptions="Center" />
 
-                                        <StackLayout Grid.Column="2" Orientation="Vertical" >
+                                        <!--<StackLayout Grid.Column="2" Orientation="Vertical" >
                                             <Button Padding ="10,0,10,0" Margin="20,5,0,5" Text="Ver Perfil"
                                                 
                                                     BackgroundColor="{StaticResource colorAccent}"
@@ -111,7 +112,7 @@
                                                     FontSize="10"
                                                     Clicked="VerPerfilMascota"/>
 
-                                        </StackLayout>
+                                        </StackLayout>-->
 
 
                                     </Grid>

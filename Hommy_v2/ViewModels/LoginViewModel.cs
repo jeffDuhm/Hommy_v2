@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using GalaSoft.MvvmLight.Command;
 using Hommy_v2.Models;
 using System.Linq;
+using Hommy_v2.Views.MasterUsuario;
 
 namespace Hommy_v2.ViewModels
 {
@@ -147,7 +148,7 @@ namespace Hommy_v2.ViewModels
                     break;
                 case "Usuario":
                     // Navegar a la interfaz del usuario
-                    Application.Current.MainPage = new ChatbotPage();
+                    Application.Current.MainPage = new MenuUsuario();
                     break;
             }
         }

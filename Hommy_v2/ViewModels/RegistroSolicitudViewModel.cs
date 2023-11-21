@@ -9,6 +9,7 @@ using Xamarin.Forms;
 using GalaSoft.MvvmLight.Command;
 using Hommy_v2.Models;
 using System.Diagnostics;
+using GalaSoft.MvvmLight.Helpers;
 
 namespace Hommy_v2.ViewModels
 {
@@ -158,6 +159,7 @@ namespace Hommy_v2.ViewModels
             };
 
             await App.Context.GuardarSolicitudAsync(solicitud);
+
             await Application.Current.MainPage.DisplayAlert("Éxito", "Solicitud enviada", "Aceptar");
 
 
@@ -165,55 +167,10 @@ namespace Hommy_v2.ViewModels
             IsVisibleTxt = false;
             IsEnabledTxt = true;
 
-            await Application.Current.MainPage.Navigation.PopAsync();
+
 
         }
         
-
-        //private readonly Solicitud solicitud;  // La solicitud actual mostrada en la página
-
-        //// Comandos
-        //public ICommand AprobarCommand { get; }
-        //public ICommand RechazarCommand { get; }
-
-
-
-        //private void AprobarSolicitud()
-        //{
-        //    // Lógica para aprobar la solicitud
-        //    CambiarEstado("Aprobado");
-        //    ActualizarListaSolicitudes();
-        //    // Actualizar el estado de la solicitud y notificar cambios
-
-        //}
-
-        //private void RechazarSolicitud()
-        //{
-        //    // Lógica para rechazar la solicitud
-        //    CambiarEstado("Rechazado");
-        //    ActualizarListaSolicitudes();
-
-        //    // Actualizar el estado de la solicitud y notificar cambios
-        //}
-
-
-        //private async void ActualizarListaSolicitudes()
-        //{
-
-        //    // Actualizar la lista de solicitudes y notificar cambios
-
-        //    await App.Context.ActualizarSolicitudAsync(solicitud);
-        //}
-
-        //// Método para cambiar el estado de la solicitud
-        //private async void CambiarEstado(string nuevoEstado)
-        //{
-        //    solicitud.Estado = nuevoEstado;
-
-        //    // Lógica adicional si es necesario, como guardar en la base de datos
-        //    await App.Context.ActualizarEstadoSolicitudAsync(solicitud.SolicitudID, nuevoEstado);
-        //}
-
 
 
         //Constructor
@@ -221,21 +178,14 @@ namespace Hommy_v2.ViewModels
         {
             MascotaSeleccionada = mascotaSeleccionada;
             IsEnabledTxt = true;
+
+
         }
 
         public RegistroSolicitudViewModel()
         {
             IsEnabledTxt = true;
         }
-
-        //public RegistroSolicitudViewModel(Solicitud solicitud)
-        //{
-        //    this.solicitud = solicitud;
-        //    AprobarCommand = new Command(AprobarSolicitud);
-        //    RechazarCommand = new Command(RechazarSolicitud);
-        //    IsEnabledTxt = true;
-        //}
-
 
 
     }

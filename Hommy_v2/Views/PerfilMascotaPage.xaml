@@ -5,6 +5,7 @@
              xmlns:vm="clr-namespace:Hommy_v2.ViewModels"
              xmlns:local="clr-namespace:Hommy_v2.Services"
              Title="Perfil"
+             BackgroundColor="White"
              >
 
     <ContentPage.BindingContext>

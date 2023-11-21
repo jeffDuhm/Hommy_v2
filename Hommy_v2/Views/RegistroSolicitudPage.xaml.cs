@@ -18,8 +18,7 @@ namespace Hommy_v2.Views
         {
             InitializeComponent();
             BindingContext = viewModel;
-
-
+       
         }
 
         private void EnviarSolicitudClicked(object sender, EventArgs e)

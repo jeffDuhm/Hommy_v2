@@ -1,12 +1,80 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Hommy_v2.Views.InicioUsuarioPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+             x:Class="Hommy_v2.Views.InicioUsuarioPage"
+             BackgroundColor="White">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+
+        </Grid.RowDefinitions>
+
+        <SearchBar Grid.Row="0" x:Name="searchBar"
+     Placeholder="Buscar refugios..."
+     SearchButtonPressed="OnSearchButtonPressed" />
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+           
+        </Grid>
+
+
+        <ScrollView Grid.Row="2" >
+            <StackLayout Orientation="Vertical" Padding="10,20,10,20" Spacing="10">
+
+                <Frame  BackgroundColor="{StaticResource colorPrimaryDark}" Padding="20" Margin="5" CornerRadius="5" BorderColor="{StaticResource colorPrimaryDark}" HasShadow="True">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+
+                        </Grid.ColumnDefinitions>
+                        
+                        <Frame WidthRequest="120"  HeightRequest="100" CornerRadius="10"  VerticalOptions="Center" Padding="0">
+                            <Image Source="img1.jpg" Aspect="AspectFill"  />
+                        </Frame>
+                        
+                        
+
+                        <StackLayout Grid.Column="1" Orientation="Vertical" >
+                            <Label Text="Son parte de tu familia BUSCA Y ADOPTA A UN AMIGO" 
+                                   Padding ="5" 
+                                   FontSize="15"
+                                   FontAttributes="Bold"
+                                   TextColor="Black" 
+                                   VerticalOptions="Center" 
+                                   HorizontalTextAlignment="Center"/>
+                                                        
+                            
+                            <Button Padding ="10,0,10,0" Margin="20,5,0,5" Text="Adoptar"
+             
+                                 BackgroundColor="{StaticResource colorAccent}"
+                                 TextColor="Black" 
+                                 WidthRequest="20"
+                                 HeightRequest="30"
+                                 CornerRadius="5"
+                                 FontSize="10"
+                                 Clicked="IrMascotasClicked"
+                                 />
+
+                        </StackLayout>
+
+
+                    </Grid>
+                </Frame>
+
+
+            </StackLayout>
+        </ScrollView>
+
+
+    </Grid>
 </ContentPage>

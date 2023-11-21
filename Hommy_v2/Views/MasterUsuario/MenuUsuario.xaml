@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FlyoutPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Hommy_v2.Views.MasterUsuario.MenuUsuario"
+             xmlns:pages="clr-namespace:Hommy_v2.Views.MasterUsuario"
+             xmlns:pagess="clr-namespace:Hommy_v2.Views">
+  <FlyoutPage.Flyout>
+    <pages:MenuUsuarioFlyout x:Name="FlyoutPage" />
+  </FlyoutPage.Flyout>
+  <FlyoutPage.Detail>
+    <NavigationPage>
+      <x:Arguments>
+        <pagess:InicioUsuarioPage/>
+      </x:Arguments>
+    </NavigationPage>
+  </FlyoutPage.Detail>
+</FlyoutPage>

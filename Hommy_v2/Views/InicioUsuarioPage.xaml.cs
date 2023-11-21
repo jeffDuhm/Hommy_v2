@@ -16,5 +16,15 @@ namespace Hommy_v2.Views
         {
             InitializeComponent();
         }
+
+        private void OnSearchButtonPressed(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void IrMascotasClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MascotasUsuariosPage());
+        }
     }
 }
