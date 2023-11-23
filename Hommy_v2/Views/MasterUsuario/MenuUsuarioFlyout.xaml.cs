@@ -42,8 +42,8 @@ namespace Hommy_v2.Views.MasterUsuario
                 {
                     new MenuUsuarioFlyoutMenuItem { Id = 0, Title = "Inicio", TargetType = typeof(InicioUsuarioPage), Icon = "inicio.png"},
                     new MenuUsuarioFlyoutMenuItem { Id = 1, Title = "Mascotas", TargetType = typeof(MascotasUsuariosPage), Icon = "mascotas.png" },
-                    new MenuUsuarioFlyoutMenuItem { Id = 2, Title = "Solicitudes", Icon = "solicitudes.png"},
-                    new MenuUsuarioFlyoutMenuItem { Id = 3, Title = "Mis donaciones", Icon = "donaciones.png" },
+                    new MenuUsuarioFlyoutMenuItem { Id = 2, Title = "Solicitudes", TargetType = typeof(SolicitudesUsuariosPage), Icon = "solicitudes.png"},
+                    new MenuUsuarioFlyoutMenuItem { Id = 3, Title = "Mis donaciones", TargetType = typeof(DonacionesUsuariosPage), Icon = "donaciones.png" },
                     new MenuUsuarioFlyoutMenuItem { Id = 4, Title = "Mensajería", TargetType = typeof(ChatbotPage), Icon = "chatbot.png"},
                    
                 });

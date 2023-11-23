@@ -1,17 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Hommy_v2.Views.DonacionesPage"
-             xmlns:vm="clr-namespace:Hommy_v2.ViewModels"
-                xmlns:local="clr-namespace:Hommy_v2.Services"
-                Title="Donaciones">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:vm="clr-namespace:Hommy_v2.ViewModels" 
+             xmlns:local="clr-namespace:Hommy_v2.Services"
+             x:Class="Hommy_v2.Views.SolicitudesUsuariosPage"
+             Title="Mis Solicitudes"
+             BackgroundColor="White">
     
     <ContentPage.BindingContext>
         <vm:RegistroSolicitudViewModel />
     </ContentPage.BindingContext>
 
-
-
+    <ContentPage.Resources>
+     <ResourceDictionary>
+         <local:ConvertidorImagen x:Key="ConvertirdorImagen" />
+     </ResourceDictionary>
+ </ContentPage.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -25,7 +29,7 @@
                  Placeholder="Buscar solicitudes..."
                  SearchButtonPressed="OnSearchButtonPressed" />
 
-
+      
 
 
         <ScrollView Grid.Row="1" >
@@ -39,7 +43,7 @@
                         <DataTemplate>
                             <ViewCell>
 
-                                <!--<ViewCell.ContextActions>
+                                <ViewCell.ContextActions>
                                     <MenuItem
                              
                              x:Name="BtnDelete"
@@ -50,7 +54,7 @@
                              CommandParameter="{Binding .}">
 
                                     </MenuItem>
-                                </ViewCell.ContextActions>-->
+                                </ViewCell.ContextActions>
 
                                 <Frame  BackgroundColor="{StaticResource colorPrimary}" Padding="10" Margin="5" CornerRadius="5" BorderColor="{StaticResource colorPrimaryDark}" HasShadow="True">
                                     <Grid>
@@ -63,7 +67,7 @@
 
                                         <StackLayout Grid.Column="1" Orientation="Vertical">
                                             <StackLayout >
-
+                                          
                                                 <Label  Text="{Binding NombreMascota}" Padding ="5" TextColor="Black" Grid.Column="1"  FontSize="18" FontAttributes="Bold" />
 
                                             </StackLayout>

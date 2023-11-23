@@ -21,12 +21,7 @@ namespace Hommy_v2.Views
             BindingContext = new DetallesSolicitudViewModel(solicitud);
 
         }
-        //public DetalleSolicitudPage(RegistroSolicitudViewModel viewModel)
-        //{
-        //    InitializeComponent();
-        //    BindingContext = viewModel;
 
-        //}
 
         private async void AprobarSolicitudClicked(object sender, EventArgs e)
         {

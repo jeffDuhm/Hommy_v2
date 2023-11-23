@@ -6,9 +6,10 @@
             xmlns:local="clr-namespace:Hommy_v2.Services"
             Title="Solicitudes">
 
-    <ContentPage.BindingContext>
+    <!--<ContentPage.BindingContext>
         <vm:RegistroSolicitudViewModel />
-    </ContentPage.BindingContext>
+    </ContentPage.BindingContext>-->
+    
     <!--<ContentPage.Resources>
         <ResourceDictionary>
             <local:ConvertidorImagen x:Key="ConvertirdorImagen" />
@@ -34,7 +35,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Button Padding ="10,0,10,0" Margin="20,30,20,30" Text="Aprobado"
+            <Button Padding ="10,0,10,0" Margin="20,30,20,30" Text="Exportar Solicitudes"
   
                     BackgroundColor="{StaticResource colorAccent}"
                     TextColor="Black" 
@@ -43,24 +44,10 @@
                     CornerRadius="10"
                     FontSize="10" Grid.Column="0"
                     WidthRequest="200"
-                    HeightRequest="30"/>
-
-            <Button Padding ="10,0,10,0" Margin="20,30,20,30" Text="Pendiente"
-      
-                    BackgroundColor="{StaticResource colorAccent}"
-                    TextColor="Black" 
-                    CornerRadius="10"
-                    FontSize="10" Grid.Column="1"
-                    WidthRequest="20"
-                    HeightRequest="30"/>
-            <Button Padding ="10,0,10,0" Margin="20,30,20,30" Text="Rechazado"
-      
-                    BackgroundColor="{StaticResource colorAccent}"
-                    TextColor="Black" 
-                    WidthRequest="20"
                     HeightRequest="30"
-                    CornerRadius="10"
-                    FontSize="10" Grid.Column="2"/>
+                    Command="{Binding ExportarCSVCommand}"/>
+
+           
              </Grid>
 
 
@@ -140,6 +127,7 @@
                     </ListView.ItemTemplate>
 
                 </ListView>
+
 
             </StackLayout>
         </ScrollView>

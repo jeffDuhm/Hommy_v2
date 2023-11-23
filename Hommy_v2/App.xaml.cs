@@ -1,4 +1,5 @@
 ﻿using Hommy_v2.Data;
+using Hommy_v2.Models;
 using Hommy_v2.Services;
 using Hommy_v2.Views;
 using System;
@@ -8,7 +9,8 @@ using Xamarin.Forms.Xaml;
 namespace Hommy_v2
 {
     public partial class App : Application
-    {   
+    {
+        public static  Usuario UsuarioActual { get; set; }
         public static DataBaseContext Context { get; set; }
 
         public App()

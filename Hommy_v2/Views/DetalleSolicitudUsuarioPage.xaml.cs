@@ -12,12 +12,12 @@ using Xamarin.Forms.Xaml;
 namespace Hommy_v2.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DetalleDonacionesPage : ContentPage
+    public partial class DetalleSolicitudUsuarioPage : ContentPage
     {
-        public DetalleDonacionesPage()
+        public DetalleSolicitudUsuarioPage(Solicitud solicitud)
         {
             InitializeComponent();
-            
+            BindingContext = new DetallesSolicitudViewModel(solicitud);
         }
     }
 }

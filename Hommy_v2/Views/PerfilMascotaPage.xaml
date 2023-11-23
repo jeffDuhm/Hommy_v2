@@ -119,6 +119,7 @@
         Padding="10"
         WidthRequest="200"
         HeightRequest="50"
+        Clicked="DonarClicked"
         />
 
         </Grid>

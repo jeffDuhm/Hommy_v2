@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace Hommy_v2.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DetallesAdopcionesPage : ContentPage
+    public partial class DonacionesUsuariosPage : ContentPage
     {
-        public DetallesAdopcionesPage()
+        public DonacionesUsuariosPage()
         {
             InitializeComponent();
         }

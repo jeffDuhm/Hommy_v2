@@ -19,6 +19,7 @@ namespace Hommy_v2.ViewModels
         public string contrasennia;
         
         public string nombre;
+     
 
         public bool isRunning;
         public bool isVisible;
@@ -109,25 +110,34 @@ namespace Hommy_v2.ViewModels
             }
 
 
-            //else if (e.Count > 0)
-            //{
-            //    Application.Current.MainPage = new AppShell();
-
-            //    IsVisibleTxt = false;
-            //    IsRunningTxt = false;
-            //    IsEnabledTxt = true;
-            //}
 
             // Verificar las credenciales del usuario
-            var usuario = await App.Context.ValidarUsuarios(correo, contrasennia);
+            var usuario = await App.Context.ValidarUsuariosAsync(correo, contrasennia);
 
-            if (usuario != null && usuario.Any())
+
+            //if (usuario != null && usuario.Any())
+            //{
+            //    var primerUsuario = usuario.First(); // Tomar el primer usuario de la lista
+            //    string rol = primerUsuario.Rol;
+
+
+
+            //    ProcesarSegunRol(rol);
+
+
+            //}
+            //else
+            //{
+            //    await Application.Current.MainPage.DisplayAlert("Error", "Credenciales inválidas", "Aceptar");
+            //}
+
+            if (usuario != null)
             {
-                var primerUsuario = usuario.First(); // Tomar el primer usuario de la lista
-                string rol = primerUsuario.Rol;
+                // Procesa según el rol y almacena el usuario actual si es necesario
+                // Almacena el usuario actual
+                App.UsuarioActual = usuario;
 
-                // Realizar acciones adicionales según el rol
-                ProcesarSegunRol(rol);
+                ProcesarSegunRol(usuario.Rol);
             }
             else
             {

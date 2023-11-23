@@ -23,9 +23,9 @@ namespace Hommy_v2.ViewModels
         public string correo;
         public string edad;
 
+
         public Mascota MascotaSeleccionada { get; set; }
 
-        
 
         public bool isRunning;
         public bool isVisible;
@@ -147,7 +147,13 @@ namespace Hommy_v2.ViewModels
             // Solicitud
             var solicitud = new Solicitud
             {
+               
                 NombreMascota = MascotaSeleccionada.Nombre,
+                RazaMascota = MascotaSeleccionada.Raza,
+                EdadMascota = MascotaSeleccionada.Edad,
+                SexoMascota = MascotaSeleccionada.Sexo,
+                EspecieMascota = MascotaSeleccionada.Especie,
+                TamannioMascota = MascotaSeleccionada.Tamannio,
                 Estado = "Pendiente",
                 Solicitante = solicitante,
                 Direccion = direccion,
@@ -170,13 +176,14 @@ namespace Hommy_v2.ViewModels
 
 
         }
-        
+
 
 
         //Constructor
         public RegistroSolicitudViewModel(Mascota mascotaSeleccionada)
         {
             MascotaSeleccionada = mascotaSeleccionada;
+
             IsEnabledTxt = true;
 
 

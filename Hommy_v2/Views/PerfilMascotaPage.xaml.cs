@@ -5,9 +5,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+
 
 namespace Hommy_v2.Views
 {
@@ -31,6 +32,13 @@ namespace Hommy_v2.Views
                 await Navigation.PushAsync(registroSolicitudPage);
             }
 
+
+        }
+
+        private async void DonarClicked(object sender, EventArgs e)
+        {
+
+            await Launcher.OpenAsync(new Uri("https://donorbox.org/hommy"));
 
         }
     }

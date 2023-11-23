@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hommy_v2.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,18 @@ namespace Hommy_v2.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
+            CargarSolicitudes();
 
         }
+
+        private async void CargarSolicitudes()
+        {
+            var solicitudes = await App.Context.ObtenerSolicitud();
+            listaSolicitudes.ItemsSource = solicitudes;
+
+        }
+
+
         private void OnSearchButtonPressed(object sender, EventArgs e)
         {
 
@@ -36,6 +46,14 @@ namespace Hommy_v2.Views
         private void BtnEliminarMascotaClicked(object sender, EventArgs e)
         {
 
+        }
+
+        private async  void VerSolicitudClicked(object sender, EventArgs e)
+        {
+            if (sender is Button button && button.BindingContext is Solicitud solicitud)
+            {
+                await Navigation.PushAsync(new DetalleSolicitudPage(solicitud));
+            }
         }
     }
 }

@@ -17,9 +17,16 @@ namespace Hommy_v2.Views
         public SolicitudesPage()
         {
             InitializeComponent();
+            BindingContext = new SolicitudesViewModel();
             
 
         }
+
+        private object SolicitudesViewModel()
+        {
+            throw new NotImplementedException();
+        }
+
         protected override void OnAppearing()
         {
             base.OnAppearing();

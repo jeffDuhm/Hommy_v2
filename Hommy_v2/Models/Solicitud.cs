@@ -10,7 +10,20 @@ namespace Hommy_v2.Models
         [PrimaryKey, AutoIncrement]
         public int SolicitudID { get; set; }
 
+        public int  UsuarioID { get; set; }
+
         public string NombreMascota { get; set; }
+
+        public string RazaMascota { get; set; }
+
+        public string EspecieMascota { get; set; }
+
+        public string EdadMascota { get; set; }
+
+        public string SexoMascota { get; set; }
+
+        public string TamannioMascota { get; set; }
+
 
         public string Estado {  get; set; }
         public string Solicitante { get; set; }
@@ -24,5 +37,7 @@ namespace Hommy_v2.Models
         public string Edad { get; set; }
 
         public DateTime FechaSolicitud { get; set; }
+
+    
     }
 }

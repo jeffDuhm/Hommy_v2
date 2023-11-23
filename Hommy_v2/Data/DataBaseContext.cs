@@ -7,6 +7,8 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using SQLiteNetExtensionsAsync.Extensions;
+
 
 namespace Hommy_v2.Data
 {
@@ -71,11 +73,11 @@ namespace Hommy_v2.Data
         // CRUD - SOLICITUDES
 
         /* Method ->  SELECT BUSCAR*/
-        public Task<Solicitud> ObtenerSolicitudIdAsync(int id)
+        public async Task<List<Solicitud>> ObtenerSolicitudPorUsuarioIdAsync(int usuarioId)
         {
-            return Connection.Table<Solicitud>()
-                .Where(s => s.SolicitudID == id)
-                .FirstOrDefaultAsync();
+            return await Connection.Table<Solicitud>()
+                .Where(s => s.UsuarioID == usuarioId)
+                .ToListAsync();
         }
 
         /* Method ->  SELECT */
@@ -130,7 +132,7 @@ namespace Hommy_v2.Data
         // CRUD - USUARIOS
 
         /* Method ->  SELECT BUSCAR*/
-        public Task<Usuario> GetUserModelAsync(int id)
+        public Task<Usuario> ObtenerIdUsuario(int id)
         {
             return Connection.Table<Usuario>()
                 .Where(i => i.UsuarioID == id)
@@ -161,6 +163,22 @@ namespace Hommy_v2.Data
         public Task<List<Usuario>> ValidarUsuarios(string correo, string contrasennia)
         {
             return Connection.QueryAsync<Usuario>("SELECT * FROM Usuario WHERE Correo = '" + correo + "'AND Contrasennia = '" + contrasennia + "'");
+        }
+
+        public Task<Usuario> ValidarUsuariosAsync(string correo, string contrasennia)
+        {
+            return Connection.Table<Usuario>()
+                    .Where(x => x.Correo == correo && x.Contrasennia == contrasennia)
+                    .FirstOrDefaultAsync();
+        }
+
+
+       
+        public Task<Usuario> ObtenerUsuarioPorCorreoAsync(string correo)
+        {
+            return Connection.Table<Usuario>()
+                .Where(c => c.Correo == correo)
+                .FirstOrDefaultAsync();
         }
     }
 }

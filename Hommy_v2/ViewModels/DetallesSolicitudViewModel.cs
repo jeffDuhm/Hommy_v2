@@ -14,6 +14,15 @@ namespace Hommy_v2.ViewModels
         private readonly Solicitud solicitud;  // La solicitud actual mostrada en la página
         public string NombreSolicitante => solicitud.Solicitante;
         public string NombreMascota => solicitud.NombreMascota;
+        public string RazaMascota => solicitud.RazaMascota;
+
+        public string EdadMascota => solicitud.EdadMascota;
+
+        public string SexoMascota => solicitud.SexoMascota;
+
+        public string EspecieMascota => solicitud.EspecieMascota;
+
+        public string TamannioMascota => solicitud.TamannioMascota;
         public string Estado => solicitud.Estado;
         public DateTime FechaSolicitud => solicitud.FechaSolicitud;
         public string Direccion => solicitud.Direccion;
